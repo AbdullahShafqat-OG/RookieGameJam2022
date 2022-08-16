@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int rotateBackSpeed = 5;
 
+    private CharacterController charController;
     private Transform modelTransform;
     private Touch touch;
 
@@ -37,17 +38,20 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        charController = GetComponent<CharacterController>();
         modelTransform = GetComponentInChildren<ModelScript>().transform;
     }
 
     void Update()
     {
         HandleTouchInput();
+
+        RaycastGround();
     }
 
     void FixedUpdate()
     {
-        MoveCharacter();
+        MoveCharacterWithCharController();
     }
 
     void HandleTouchInput()
@@ -101,5 +105,24 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(bounds.x, transform.position.y, transform.position.z);
 
         lastDirection = direction;
+    }
+
+    void MoveCharacterWithCharController()
+    {
+        Vector3 vel = Vector3.forward * moveSpeed * Time.deltaTime;
+        vel.x = direction * xMovement * Time.deltaTime;
+        charController.SimpleMove(vel);
+    }
+
+    void RaycastGround()
+    {
+        Debug.DrawRay(transform.position, -transform.up, Color.red);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, -transform.up, out hit))
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.Cross(transform.right, hit.normal));
+        }
     }
 }
