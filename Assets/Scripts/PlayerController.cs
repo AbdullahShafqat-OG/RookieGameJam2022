@@ -15,14 +15,15 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 5.0f;
     [SerializeField]
     private float slideSpeed = 500.0f;
-
     [SerializeField]
     private float rotateSpeed = 10.0f;
-
     [Range(1, 10)]
     [SerializeField]
     private int rotateBackSpeed = 5;
+    [SerializeField]
+    private float slopePush = 2.0f;
 
+    private Rigidbody rb;
     private CharacterController charController;
     private Transform modelTransform;
     private Touch touch;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         charController = GetComponent<CharacterController>();
         modelTransform = GetComponentInChildren<ModelScript>().transform;
     }
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MoveCharacterWithCharController();
+        MoveCharacter();
     }
 
     void HandleTouchInput()
@@ -81,20 +83,20 @@ public class PlayerController : MonoBehaviour
             rotateFactor = 0.0f;
             Quaternion newRot = Quaternion.Euler(new Vector3(0, 0, 0));
 
-            modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, newRot, rotateBackSpeed * Time.deltaTime);
+            //modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, newRot, rotateBackSpeed * Time.deltaTime);
             return;
         }
 
         if (lastDirection != direction)
         {
             rotateFactor = 0.0f;
-            modelTransform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            //modelTransform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
         }
 
         rotateFactor += rotateSpeed;
         rotateFactor = Mathf.Clamp(rotateFactor, 0.0f, maxRotation);
 
-        modelTransform.eulerAngles = new Vector3(0.0f, rotateFactor * direction, 0.0f);
+        //modelTransform.eulerAngles = new Vector3(0.0f, rotateFactor * direction, 0.0f);
 
         transform.Translate(Vector3.right * direction * xMovement * Time.deltaTime);
 
@@ -122,7 +124,12 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, -transform.up, out hit))
         {
-            transform.rotation = Quaternion.LookRotation(Vector3.Cross(transform.right, hit.normal));
+            if (hit.transform.CompareTag("Slope"))
+            {
+                Debug.Log("HITTING A SLOPE");
+                rb.AddRelativeForce(transform.up * slopePush);
+            }
+            //transform.rotation = Quaternion.LookRotation(Vector3.Cross(transform.right, hit.normal));
         }
     }
 }
