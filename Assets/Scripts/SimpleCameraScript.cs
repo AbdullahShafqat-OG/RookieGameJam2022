@@ -18,5 +18,8 @@ public class SimpleCameraScript : MonoBehaviour
     {
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y, target.position.z + offset.z);
         transform.position = newPos;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            AudioManager.instance.PlaySound("YouThere");
     }
 }
