@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.unity.animation.rigging": "1.1.1",
     "com.unity.collab-proxy": "1.15.18",
     "com.unity.feature.development": "1.0.1",
     "com.unity.ide.rider": "3.0.15",
@@ -41,6 +40,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "devlocker.utils.scenereference": "https://github.com/NibbleByte/UnitySceneReference.git#upm"
   }
 }
