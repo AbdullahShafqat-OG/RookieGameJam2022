@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
         DontDestroyOnLoad(gameObject);
     }
 

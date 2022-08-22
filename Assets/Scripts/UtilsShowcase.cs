@@ -17,6 +17,9 @@ public class UtilsShowcase : MonoBehaviour
     [Space]
     public KeyCode sceneNextKey;
 
+    [Space]
+    public KeyCode initiateUIEventKey;
+
     // Update is called once per frame
     void Update()
     {
@@ -31,5 +34,8 @@ public class UtilsShowcase : MonoBehaviour
 
         if (Input.GetKeyDown(sceneNextKey))
             SceneLoader.instance.LoadNext();
+
+        if (Input.GetKeyDown(initiateUIEventKey))
+            Messenger.Broadcast(GameEvent.GENERIC_EVENT);
     }
 }
