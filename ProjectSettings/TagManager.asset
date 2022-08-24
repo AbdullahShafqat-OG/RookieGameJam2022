@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - cam rotate right
+  - Destructible
+  - DestroyChild
   layers:
   - Default
   - TransparentFX

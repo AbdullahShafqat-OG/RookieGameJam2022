@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerCollision : MonoBehaviour
+public class PlayerCollision : MonoBehaviour
 {
     public PlayerManager playerManager;
+
+    [SerializeField, Range(0f, 50f)]
+    private float maxForceMagnitude;
+    [SerializeField]
+    private float forceOnCollision;
 
     Transform camHolder;
 
@@ -30,13 +35,22 @@ public class playerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        DestructibleObjInfo dInfo = collision.collider.GetComponent<DestructibleObjInfo>();
+        DestructibleObj dInfo = collision.collider.GetComponent<DestructibleObj>();
         if (dInfo != null)
         {
-            dInfo.health -= playerManager.damageCapability;
-            Debug.Log(dInfo.gameObject.name + ", " + dInfo.health);
+            dInfo.DamageObj(playerManager.damageCapability);
+            //dInfo.health -= playerManager.damageCapability;
+            //Debug.Log(dInfo.gameObject.name + ", " + dInfo.health);
 
-            //collision.contacts[0]
+            Debug.DrawLine(collision.transform.position, -collision.relativeVelocity, Color.red);
+            //Debug.Break();
+            Vector3 force = -collision.relativeVelocity * forceOnCollision;
+            if (force.magnitude > maxForceMagnitude)
+            {
+                force = force.normalized * maxForceMagnitude;
+            }
+            //Debug.Log(force.magnitude);
+            dInfo.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         }
     }
 }
