@@ -9,4 +9,5 @@ public class PlayerManager : MonoBehaviour
     public playerCollision playerCollision;
     public GameObject camHolder;
 
+    public int damageCapability;
 }

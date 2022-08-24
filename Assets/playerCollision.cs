@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerCollision : MonoBehaviour
 {
     public PlayerManager playerManager;
+
     Transform camHolder;
 
     private void Start()
@@ -24,6 +25,18 @@ public class playerCollision : MonoBehaviour
         else if (other.tag == "cam rotate left")
         {
             playerManager.camHolder.transform.Rotate(Vector3.up.normalized * -90);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        DestructibleObjInfo dInfo = collision.collider.GetComponent<DestructibleObjInfo>();
+        if (dInfo != null)
+        {
+            dInfo.health -= playerManager.damageCapability;
+            Debug.Log(dInfo.gameObject.name + ", " + dInfo.health);
+
+            //collision.contacts[0]
         }
     }
 }
