@@ -33,12 +33,8 @@ public class DestructibleObj : MonoBehaviour
             if (child == this.transform)
                 continue;
 
-            Debug.Log("Destructible");
-
             if (child.CompareTag("Destructible"))
             {
-                Debug.Log("Destructible");
-
                 child.parent = null;
                 child.GetComponent<Collider>().enabled = true;
 
