@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 1065245483728343659}
   - component: {fileID: 7551596078439688690}
   - component: {fileID: 8262393750302131864}
+  - component: {fileID: 2420860812442449965}
   m_Layer: 0
   m_Name: DestructibleBed
   m_TagString: Untagged
@@ -422,3 +423,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 31.13538, y: 7.820779, z: 22.474445}
   m_Center: {x: 0, y: -3.6073747, z: 0}
+--- !u!208 &2420860812442449965
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703526947795216613}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 15.568001, y: 7.518, z: 11.237}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

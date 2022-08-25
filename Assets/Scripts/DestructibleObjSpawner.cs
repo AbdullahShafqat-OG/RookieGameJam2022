@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DestructibleObjSpawner : MonoBehaviour
 {
@@ -8,10 +9,18 @@ public class DestructibleObjSpawner : MonoBehaviour
     public GameObject[] destructibleObj;
     public int numObjs = 50;
 
-    // Start is called before the first frame update
-    void Awake()
+    public NavMeshSurface navMeshSurface;
+
+    private void Awake()
+    {
+        
+    }
+
+    private void Start()
     {
         SpawnObjs();
+
+        navMeshSurface.BuildNavMesh();
     }
 
     void SpawnObjs()

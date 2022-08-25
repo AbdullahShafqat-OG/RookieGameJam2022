@@ -21,11 +21,11 @@ public class UIManager : MonoBehaviour
 
     private void OnObjDestroyed()
     {
-        Debug.Log("UI Obj Destroyed Event Triggered");
+        //Debug.Log("UI Obj Destroyed Event Triggered");
         //!EventSystem.current.IsPointerOverGameObject()
 
         float progressValue = (float)gameManager.currentObjListSize / gameManager.initialObjListSize * 100;
-        Debug.Log(progressValue);
+        //Debug.Log(progressValue);
         progressSlider.value = 100 - progressValue;
     }
 }
