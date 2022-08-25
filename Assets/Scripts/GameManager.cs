@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float timeScale = 1;
     [SerializeField]
+    private float dObjDestroyDelay = 1.0f;
+    [SerializeField]
     private GameObject destructibleObjsParent;
 
     private List<Transform> destructibleObjsList = new List<Transform>();
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void DestroyDestructibleObj(GameObject obj)
     {
         destructibleObjsList.Remove(obj.transform);
-        Destroy(obj);
+        Destroy(obj, dObjDestroyDelay);
 
         currentObjListSize = destructibleObjsList.Count;
 

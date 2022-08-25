@@ -289,12 +289,11 @@ GameObject:
   - component: {fileID: 1065245483728343660}
   - component: {fileID: 6623703925619642488}
   - component: {fileID: 1065245483728343658}
-  - component: {fileID: 1065245483728343659}
   - component: {fileID: 7551596078439688690}
   - component: {fileID: 8262393750302131864}
   - component: {fileID: 2420860812442449965}
   m_Layer: 0
-  m_Name: DestructibleBed
+  m_Name: NonDestructibleBed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,7 +375,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6703526947795216613}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -384,19 +383,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1065245483728343659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6703526947795216613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e98f8a8234d3d488d49f0a21853223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 4
 --- !u!65 &7551596078439688690
 BoxCollider:
   m_ObjectHideFlags: 0
