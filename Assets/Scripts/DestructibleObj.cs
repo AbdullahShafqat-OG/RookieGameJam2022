@@ -15,9 +15,10 @@ public class DestructibleObj : MonoBehaviour
         health -= value;
         if (health <= 0)
         {
-            HandleChildren();
             onDestroyedObj(gameObject);
         }
+
+        HandleChildren();
 
         return health;
     }
@@ -32,26 +33,18 @@ public class DestructibleObj : MonoBehaviour
             if (child == this.transform)
                 continue;
 
-            child.parent = null;
-            child.GetComponent<Collider>().enabled = true;
+            Debug.Log("Destructible");
+
             if (child.CompareTag("Destructible"))
             {
-                //Debug.Log("Destructible");
+                Debug.Log("Destructible");
+
+                child.parent = null;
+                child.GetComponent<Collider>().enabled = true;
 
                 DestructibleObj destructibleObj = child.gameObject.AddComponent<DestructibleObj>();
-                destructibleObj.health = 1;
-            }
-            else if (child.CompareTag("DestroyChild"))
-            {
-                //Debug.Log("DestroyChild");
-
-                Destroy(child.gameObject);
-            }
-            else
-            {
-                //Debug.Log("Retain");
-
                 child.gameObject.AddComponent<Rigidbody>();
+                destructibleObj.health = 1;
             }
         }
     }

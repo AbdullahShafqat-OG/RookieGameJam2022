@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int listSize;
-
     [SerializeField]
     private float timeScale = 1;
     [SerializeField]
     private GameObject destructibleObjsParent;
 
     private List<Transform> destructibleObjsList = new List<Transform>();
+
+    // serialized for debugging only
+    [field: SerializeField]
+    public int initialObjListSize { get; private set; }
+    [field: SerializeField]
+    public int currentObjListSize { get; private set; }
 
     private void OnEnable()
     {
@@ -34,16 +38,17 @@ public class GameManager : MonoBehaviour
             destructibleObjsList.Add(objs[i].transform);
         }
 
-        listSize = destructibleObjsList.Count;
+        initialObjListSize = destructibleObjsList.Count;
+        currentObjListSize = initialObjListSize;
     }
 
     private void DestroyDestructibleObj(GameObject obj)
     {
-        //Debug.Log("Destroying obj " + obj.name);
-
         destructibleObjsList.Remove(obj.transform);
         Destroy(obj);
 
-        listSize = destructibleObjsList.Count;
+        currentObjListSize = destructibleObjsList.Count;
+
+        Messenger.Broadcast(GameEvent.OBJ_DESTROYED);
     }
 }

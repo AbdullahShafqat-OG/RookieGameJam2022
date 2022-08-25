@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DestructibleObjSpawner : MonoBehaviour
 {
+    public Transform destructibleObjsParent;
     public GameObject[] destructibleObj;
     public int numObjs = 50;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SpawnObjs();
     }
@@ -18,10 +19,12 @@ public class DestructibleObjSpawner : MonoBehaviour
         Collider col = GetComponent<BoxCollider>();
         for (int i = 0; i < numObjs; i++)
         {
-            Instantiate(
+            GameObject obj = Instantiate(
                 destructibleObj[Random.Range(0, destructibleObj.Length)], 
                 RandomPointInBounds(col.bounds), Quaternion.identity
                 );
+
+            obj.transform.SetParent(destructibleObjsParent);
         }
     }
 

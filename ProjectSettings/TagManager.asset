@@ -6,7 +6,9 @@ TagManager:
   tags:
   - cam rotate right
   - Destructible
-  - DestroyChild
+  - Destructible/3
+  - Destructible/1
+  - Destructible/2
   layers:
   - Default
   - TransparentFX
