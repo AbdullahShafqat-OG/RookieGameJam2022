@@ -45,4 +45,10 @@ public class SceneLoader : MonoBehaviour
         else
             Debug.LogWarning("Scene Name: " + scenes[currentScene].SceneName + " is last scene!");
     }
+
+    public void ReloadScene()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scenes[currentScene].ScenePath);
+    }
 }
