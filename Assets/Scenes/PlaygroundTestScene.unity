@@ -157,11 +157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructibleObjsParent: {fileID: 1284692546}
   destructibleObj:
-  - {fileID: 4755348719738203280, guid: f87a0587bedad254eb1fbbb8442948c3, type: 3}
-  - {fileID: 1175870681693810841, guid: 5d06962d13cd64b49a89973288cb89a2, type: 3}
-  - {fileID: 2563621678715851171, guid: 5d283b8ec5c86a24199420340b8f4ed9, type: 3}
-  - {fileID: 3379833841444735739, guid: 038f89c60b83a804f85c01445f99174f, type: 3}
   - {fileID: 1018056092953193672, guid: ad72a841810c8454fa4e8d515fc0f13a, type: 3}
+  - {fileID: 1175870681693810841, guid: 5d06962d13cd64b49a89973288cb89a2, type: 3}
+  - {fileID: 3328672753182506358, guid: 45ce4c751957725408c1a714ec9d6887, type: 3}
+  - {fileID: 3353023846502917560, guid: eacec785811dc6a478daa8d826115306, type: 3}
+  - {fileID: 3379833841444735739, guid: 038f89c60b83a804f85c01445f99174f, type: 3}
+  - {fileID: 2415671043853330059, guid: d0f6f12c79ef3354f8656ef7467134ab, type: 3}
+  - {fileID: 2563621678715851171, guid: 5d283b8ec5c86a24199420340b8f4ed9, type: 3}
   numObjs: 50
   navMeshSurface: {fileID: 1321158045}
 --- !u!65 &67536144
