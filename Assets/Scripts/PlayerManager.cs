@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public GameObject camHolder;
+
     [HideInInspector]
     public PlayerInput playerInput;
     [HideInInspector]
     public PlayerMovement playerMovement;
     [HideInInspector]
     public PlayerCollision playerCollision;
-    [HideInInspector]
-    public GameObject camHolder;
 
     public int damageCapability;
 

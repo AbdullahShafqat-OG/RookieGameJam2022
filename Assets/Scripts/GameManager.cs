@@ -44,6 +44,12 @@ public class GameManager : MonoBehaviour
         currentObjListSize = initialObjListSize;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneLoader.instance.ReloadScene();
+    }
+
     private void DestroyDestructibleObj(GameObject obj)
     {
         destructibleObjsList.Remove(obj.transform);
