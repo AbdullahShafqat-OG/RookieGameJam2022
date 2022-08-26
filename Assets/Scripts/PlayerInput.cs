@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public PlayerManager playerManager;
+    public FixedJoystick joystick;
+
+    internal float dir;
+
     void Start()
     {
         //vroom vrrom madafaka
@@ -13,6 +17,7 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        dir = Input.GetAxis("Horizontal");
+        dir = joystick.Direction.x;
     }
 }

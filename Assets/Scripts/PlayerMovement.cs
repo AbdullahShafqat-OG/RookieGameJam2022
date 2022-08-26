@@ -9,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody rb;
     public float forwardSpeed;
-    public float turnSpeed;
-    private float dir;
+    public float turnSpeed, maxTurn;
+
+    private float turn;
 
 
     private void Start()
@@ -19,12 +20,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        dir = Input.GetAxis("Horizontal");
+        
     }
     void FixedUpdate()
     {
         moveForward();
-        rotatePlayer(dir);
+        rotatePlayer(playerManager.playerInput.dir);
     }
     void moveForward()
     {
@@ -32,10 +33,18 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.forward * forwardSpeed);
         }
-        //rb.velocity = transform.forward * forwardSpeed;
     }
     void rotatePlayer(float dir)
     {
-        transform.Rotate(Vector3.up.normalized * dir * turnSpeed);
+        if (turn <= maxTurn)
+        {
+            turn += turnSpeed;
+        }
+        transform.Rotate(Vector3.up.normalized * dir * turn);
+
+        if (dir == 0)
+        {
+            turn = 0;
+        }
     }
 }
