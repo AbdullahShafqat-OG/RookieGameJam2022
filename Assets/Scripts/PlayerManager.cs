@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector]
     public PlayerCollision playerCollision;
 
+    [SerializeField]
+    internal Animator animator;
     public int damageCapability;
 
     private void Awake()
