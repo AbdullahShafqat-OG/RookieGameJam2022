@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 4752609542949409387, guid: 5eb70769c6cbdea42b730a648fc0a38c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4752609542949409387, guid: 5eb70769c6cbdea42b730a648fc0a38c,
         type: 3}
@@ -542,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 7796109361795381931, guid: cef42f1d056ca8b438290afddaed1b16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7796109361795381931, guid: cef42f1d056ca8b438290afddaed1b16,
         type: 3}
@@ -757,35 +757,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
         type: 3}
-      propertyPath: shader
-      value: 
-      objectReference: {fileID: 15101, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
-        type: 3}
-      propertyPath: timeScale
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
-        type: 3}
-      propertyPath: dObjDestroyDelay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
-        type: 3}
-      propertyPath: destroyParticleEffect
-      value: 
-      objectReference: {fileID: 2427055725731672747, guid: b53633d20db8dbe48b78c75f38a931df,
-        type: 3}
-    - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
-        type: 3}
       propertyPath: destructibleObjsParent
       value: 
       objectReference: {fileID: 1428678566}
-    - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
-        type: 3}
-      propertyPath: destroyPEScaleMultiplier
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 7642812345655279902, guid: 5bef89c527f7189438ab19ba5dfa446f,
         type: 3}
       propertyPath: m_Name
@@ -1913,7 +1887,7 @@ PrefabInstance:
     - target: {fileID: 5919783218270472202, guid: 1d7904bbf9fc04442b606295804d90d4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5919783218270472202, guid: 1d7904bbf9fc04442b606295804d90d4,
         type: 3}
