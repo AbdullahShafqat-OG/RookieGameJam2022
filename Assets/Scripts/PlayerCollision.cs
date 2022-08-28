@@ -6,12 +6,17 @@ public class PlayerCollision : MonoBehaviour
 {
     public PlayerManager playerManager;
 
+    [SerializeField]
+    private GameObject[] particleEffects;
+
     [SerializeField, Range(0f, 50f)]
     private float maxForceMagnitude;
     [SerializeField]
     private float forceOnCollision;
-
+    
     Transform camHolder;
+
+    Vector3 hitPoint;
 
     private void Start()
     {
@@ -38,19 +43,26 @@ public class PlayerCollision : MonoBehaviour
         DestructibleObj dInfo = collision.collider.GetComponent<DestructibleObj>();
         if (dInfo != null)
         {
-            dInfo.DamageObj(playerManager.damageCapability);
-            //dInfo.health -= playerManager.damageCapability;
-            //Debug.Log(dInfo.gameObject.name + ", " + dInfo.health);
+            hitPoint = collision.GetContact(0).point;
+            Instantiate(particleEffects[Random.Range(0, particleEffects.Length)], hitPoint, Quaternion.identity);
 
-            Debug.DrawLine(collision.transform.position, -collision.relativeVelocity, Color.red);
             //Debug.Break();
+
+            dInfo.DamageObj(playerManager.damageCapability);
+
             Vector3 force = -collision.relativeVelocity * forceOnCollision;
+
             if (force.magnitude > maxForceMagnitude)
             {
                 force = force.normalized * maxForceMagnitude;
             }
-            //Debug.Log(force.magnitude);
+
             dInfo.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(hitPoint, 0.2f);
     }
 }
