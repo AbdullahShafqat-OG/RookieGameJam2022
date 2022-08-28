@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 4752609542949409387, guid: 5eb70769c6cbdea42b730a648fc0a38c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4752609542949409387, guid: 5eb70769c6cbdea42b730a648fc0a38c,
         type: 3}
@@ -210,7 +210,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-86516
+  m_Name: pb_Mesh-129412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -542,7 +542,7 @@ PrefabInstance:
     - target: {fileID: 7796109361795381931, guid: cef42f1d056ca8b438290afddaed1b16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7796109361795381931, guid: cef42f1d056ca8b438290afddaed1b16,
         type: 3}
@@ -753,16 +753,6 @@ PrefabInstance:
     - target: {fileID: 7642812345655279900, guid: 5bef89c527f7189438ab19ba5dfa446f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
-        type: 3}
-      propertyPath: timeScale
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
-        type: 3}
-      propertyPath: dObjDestroyDelay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
@@ -1765,11 +1755,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8208300846230352616, guid: d0f6f12c79ef3354f8656ef7467134ab,
-        type: 3}
-      propertyPath: m_Mass
-      value: 0.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0f6f12c79ef3354f8656ef7467134ab, type: 3}
 --- !u!4 &1293211400 stripped
@@ -1902,7 +1887,7 @@ PrefabInstance:
     - target: {fileID: 5919783218270472202, guid: 1d7904bbf9fc04442b606295804d90d4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5919783218270472202, guid: 1d7904bbf9fc04442b606295804d90d4,
         type: 3}

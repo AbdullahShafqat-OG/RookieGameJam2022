@@ -10,13 +10,17 @@ public class GameManager : MonoBehaviour
     private float dObjDestroyDelay = 1.0f;
     [SerializeField]
     private GameObject destructibleObjsParent;
+    [SerializeField]
+    private GameObject destroyParticleEffect;
+    [SerializeField]
+    private float destroyPEScaleDown = 6.0f;
 
     private List<Transform> destructibleObjsList = new List<Transform>();
 
     // serialized for debugging only
-    [field: SerializeField]
+    //[field: SerializeField]
     public int initialObjListSize { get; private set; }
-    [field: SerializeField]
+    //[field: SerializeField]
     public int currentObjListSize { get; private set; }
 
     private void OnEnable()
@@ -52,6 +56,12 @@ public class GameManager : MonoBehaviour
 
     private void DestroyDestructibleObj(GameObject obj)
     {
+        Renderer objRenderer = obj.GetComponent<Renderer>();
+
+        GameObject particle = Instantiate(destroyParticleEffect, obj.transform.position, Quaternion.identity);
+        particle.transform.localScale *= objRenderer.bounds.size.magnitude / destroyPEScaleDown;
+        particle.GetComponent<ParticleSystemRenderer>().material.color = objRenderer.material.color;
+
         destructibleObjsList.Remove(obj.transform);
         Destroy(obj, dObjDestroyDelay);
 
