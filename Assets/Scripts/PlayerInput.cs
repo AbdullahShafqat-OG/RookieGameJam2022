@@ -9,11 +9,6 @@ public class PlayerInput : MonoBehaviour
 
     internal float dir;
 
-    void Start()
-    {
-        //vroom vrrom madafaka
-    }
-
     // Update is called once per frame
     void Update()
     {
