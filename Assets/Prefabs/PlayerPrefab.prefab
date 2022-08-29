@@ -3020,6 +3020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 5017947528974596282}
   joystick: {fileID: 0}
+  lerpStep: 0.1
 --- !u!114 &5017947528974596284
 MonoBehaviour:
   m_ObjectHideFlags: 0

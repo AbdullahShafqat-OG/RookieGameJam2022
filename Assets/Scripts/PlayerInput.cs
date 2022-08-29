@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     public FixedJoystick joystick;
 
     internal float dir;
+    public float lerpStep;
 
     void Start()
     {
@@ -26,6 +27,21 @@ public class PlayerInput : MonoBehaviour
     void setAnimBlendValue(float xDir)
     {
         float value = 0.5f + (xDir / 2);
+        
+        if(value == 0.5f)
+        {
+            float animBlend = playerManager.animator.GetFloat("Blend");
+            if (animBlend > 0.52f)
+            {
+                playerManager.animator.SetFloat("Blend", animBlend - lerpStep * Time.deltaTime);
+            }
+            else if(animBlend < 0.48f)
+            {
+                playerManager.animator.SetFloat("Blend", animBlend + lerpStep * Time.deltaTime);
+            }
+            return;
+        }
+
         playerManager.animator.SetFloat("Blend", value);
     }
 }
