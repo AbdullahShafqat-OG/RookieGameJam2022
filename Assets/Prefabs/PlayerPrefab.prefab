@@ -3051,6 +3051,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 5017947528974596282}
+  particleEffects:
+  - {fileID: 6872953354918377347, guid: f7ebfa7e607f58b4eac560cc851dee68, type: 3}
+  - {fileID: 6230385543387457328, guid: fb9b5c6e44c772940b4c03719bf70bcf, type: 3}
   maxForceMagnitude: 1
   forceOnCollision: 2
 --- !u!136 &5017947528974596286

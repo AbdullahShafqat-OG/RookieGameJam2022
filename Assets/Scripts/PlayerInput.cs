@@ -10,11 +10,6 @@ public class PlayerInput : MonoBehaviour
     internal float dir;
     public float lerpStep;
 
-    void Start()
-    {
-        //vroom vrrom madafaka
-    }
-
     // Update is called once per frame
     void Update()
     {
