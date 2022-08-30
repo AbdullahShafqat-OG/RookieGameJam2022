@@ -13,38 +13,53 @@ public class PlayerMovement : MonoBehaviour
 
     private float turn;
 
+    private bool alive = true;
 
-    private void Start()
+    private void Awake()
     {
+        Messenger.AddListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+    }
 
-    }
-    private void Update()
+    private void OnDestroy()
     {
-        
+        Messenger.RemoveListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
     }
+
     void FixedUpdate()
     {
-        moveForward();
-        rotatePlayer(playerManager.playerInput.dir);
+        if (!alive)
+            return;
+
+        MoveForward();
+        RotatePlayer(playerManager.playerInput.dir);
     }
-    void moveForward()
+
+    void MoveForward()
     {
         if (rb.velocity.magnitude < forwardSpeed)
         {
             rb.AddForce(transform.forward * forwardSpeed);
         }
     }
-    void rotatePlayer(float dir)
+
+    void RotatePlayer(float dir)
     {
         if (turn <= maxTurn)
         {
             turn += turnSpeed;
         }
+
         transform.Rotate(Vector3.up.normalized * dir * turn);
 
         if (dir == 0)
         {
             turn = 0;
         }
+    }
+
+    private void OnAmmiCaughtUp()
+    {
+        Debug.Log("Ammi Caught Up Event Triggered in Player Movement");
+        alive = false;
     }
 }
