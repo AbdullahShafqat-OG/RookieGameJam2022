@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestructibleObj : MonoBehaviour
 {
     [SerializeField]
-    internal int health = 2;
+    private int health = 2;
 
     public delegate void DestroyObjAction(GameObject obj);
     public static event DestroyObjAction onDestroyedObj;
