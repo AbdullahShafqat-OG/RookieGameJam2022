@@ -3020,22 +3020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 5017947528974596282}
   joystick: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  lerpStep: 0.2
-=======
->>>>>>> parent of bf26141 (some health bar work done)
-=======
-  lerpStep: 0.1
->>>>>>> parent of 01dd998 (Trying to fix health bar)
-=======
-  lerpStep: 0.1
->>>>>>> parent of 01dd998 (Trying to fix health bar)
-=======
-  lerpStep: 0.1
->>>>>>> parent of 01dd998 (Trying to fix health bar)
 --- !u!114 &5017947528974596284
 MonoBehaviour:
   m_ObjectHideFlags: 0
