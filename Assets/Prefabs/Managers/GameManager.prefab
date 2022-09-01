@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4dc82ab859431a47a1b97893638c276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 1.2
+  timeScale: 1
   dObjDestroyDelay: 0
   destructibleObjsParent: {fileID: 0}
   destroyParticleEffect: {fileID: 2427055725731672747, guid: b53633d20db8dbe48b78c75f38a931df,

@@ -939,6 +939,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NavMesh
       objectReference: {fileID: 0}
+    - target: {fileID: 4839697688395175791, guid: b3e71bee27320174b9d32a7d2a6223f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3e71bee27320174b9d32a7d2a6223f7, type: 3}
 --- !u!1 &530492345
@@ -1118,6 +1123,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5017947528145669502}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &703345534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7642812345655279901, guid: 5bef89c527f7189438ab19ba5dfa446f,
+    type: 3}
+  m_PrefabInstance: {fileID: 377444999}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4dc82ab859431a47a1b97893638c276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &716507652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1719,6 +1736,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5727883853030941673, guid: 35c46eb0754d59c4abd553a5655261f7,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 703345534}
     - target: {fileID: 5727883853030941674, guid: 35c46eb0754d59c4abd553a5655261f7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1828,6 +1850,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727883853030941678, guid: 35c46eb0754d59c4abd553a5655261f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5727883853837108112, guid: 35c46eb0754d59c4abd553a5655261f7,
         type: 3}
@@ -2470,6 +2497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MotherAnimated
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659618649432263695, guid: 8f48d425acd98b144bcba5d0c0b65f1d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f48d425acd98b144bcba5d0c0b65f1d, type: 3}
