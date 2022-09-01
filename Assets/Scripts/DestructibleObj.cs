@@ -17,6 +17,14 @@ public class DestructibleObj : MonoBehaviour
     private MeshRenderer meshRenderer;
     private Material[] originalMats;
 
+    private void Start()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+        
+        Material[] mats = meshRenderer.materials;
+        originalMats = (Material[])mats.Clone();
+    }
+
     public int DamageObj(int value)
     {
         health -= value;
@@ -34,12 +42,7 @@ public class DestructibleObj : MonoBehaviour
 
     private void DamageFlash()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-
-        Material[] mats = meshRenderer.materials;
-        originalMats = (Material[])mats.Clone();
-
-        meshRenderer.materials = Enumerable.Repeat<Material>(damageMat, mats.Length).ToArray();
+        meshRenderer.materials = Enumerable.Repeat<Material>(damageMat, originalMats.Length).ToArray();
 
         StartCoroutine(RestoreMaterials());
     }
