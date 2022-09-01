@@ -1337,6 +1337,18 @@ Transform:
   m_Father: {fileID: 1150922309}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002605431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 701020236, guid: 35c46eb0754d59c4abd553a5655261f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1442068638}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1150922308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1753,11 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 703345534}
+    - target: {fileID: 5727883853030941673, guid: 35c46eb0754d59c4abd553a5655261f7,
+        type: 3}
+      propertyPath: progressTxt
+      value: 
+      objectReference: {fileID: 1002605431}
     - target: {fileID: 5727883853030941674, guid: 35c46eb0754d59c4abd553a5655261f7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1850,11 +1867,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727883853030941678, guid: 35c46eb0754d59c4abd553a5655261f7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5727883853837108112, guid: 35c46eb0754d59c4abd553a5655261f7,
         type: 3}

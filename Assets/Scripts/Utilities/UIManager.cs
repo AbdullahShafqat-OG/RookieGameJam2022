@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private Slider progressSlider;
+    [SerializeField]
+    private TextMeshProUGUI progressTxt;
 
     private void Awake()
     {
@@ -29,6 +32,9 @@ public class UIManager : MonoBehaviour
         float progressValue = (float)gameManager.currentObjListSize / gameManager.initialObjListSize * 100;
         //Debug.Log(progressValue);
         progressSlider.value = 100 - progressValue;
+        string text = (gameManager.initialObjListSize - gameManager.currentObjListSize).ToString();
+        text += " / " + gameManager.initialObjListSize;
+        progressTxt.text = text;
     }
 
     private void OnAmmiCaughtUp()
