@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private GameObject destroyParticleEffect;
     [SerializeField]
     private float destroyPEScaleDown = 6.0f;
+    [SerializeField]
+    private GameObject healthBar;
 
     private List<Transform> destructibleObjsList = new List<Transform>();
 
@@ -44,8 +46,11 @@ public class GameManager : MonoBehaviour
 
         initialObjListSize = destructibleObjsList.Count;
         currentObjListSize = initialObjListSize;
-    }
 
+        Invoke("InstantiateHealthBars", 0.5f);
+        //InstantiateHealthBars();
+    }
+    
     private void Update()
     {
         // CODE FOR TESTING
@@ -67,5 +72,16 @@ public class GameManager : MonoBehaviour
         currentObjListSize = destructibleObjsList.Count;
 
         Messenger.Broadcast(GameEvent.OBJ_DESTROYED);
+    }
+
+    private void InstantiateHealthBars()
+    {
+        foreach (var obj in destructibleObjsList)
+        {
+            Debug.Log("YOS");
+            Instantiate(healthBar, obj.position, healthBar.transform.rotation);
+            healthBar.GetComponent<FollowScript>().toFollow = obj.transform;
+            healthBar.GetComponent<HealthIndicator>().dObj = obj.GetComponent<DestructibleObj>();
+        }
     }
 }

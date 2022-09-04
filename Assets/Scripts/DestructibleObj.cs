@@ -9,7 +9,7 @@ public class DestructibleObj : MonoBehaviour
     private Material damageMat;
 
     [SerializeField]
-    private int health = 2;
+    internal int health = 2;
 
     public delegate void DestroyObjAction(GameObject obj);
     public static event DestroyObjAction onDestroyedObj;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowScript : MonoBehaviour
 {
     [SerializeField]
-    private Transform toFollow;
+    internal Transform toFollow;
 
     private void Update()
     {

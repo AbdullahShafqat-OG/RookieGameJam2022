@@ -50,3 +50,5 @@ MonoBehaviour:
   destroyParticleEffect: {fileID: 2427055725731672747, guid: b53633d20db8dbe48b78c75f38a931df,
     type: 3}
   destroyPEScaleDown: 6
+  healthBar: {fileID: 6061074371419098970, guid: 010151b2b2d414342b12d1a0a6120d6b,
+    type: 3}
