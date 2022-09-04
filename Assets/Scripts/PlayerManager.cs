@@ -22,5 +22,25 @@ public class PlayerManager : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
         playerCollision = GetComponent<PlayerCollision>();
+
+        playerInput.enabled = false;
+        playerMovement.enabled = false;
+        playerCollision.enabled = false;
+
+        Messenger.AddListener(GameEvent.START_LEVEL, StartLevel);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.START_LEVEL, StartLevel);
+    }
+
+    private void StartLevel()
+    {
+        Debug.Log("Starting Game");
+
+        playerInput.enabled = true;
+        playerMovement.enabled = true;
+        playerCollision.enabled = true;
     }
 }

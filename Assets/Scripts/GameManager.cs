@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,10 +18,7 @@ public class GameManager : MonoBehaviour
 
     private List<Transform> destructibleObjsList = new List<Transform>();
 
-    // serialized for debugging only
-    //[field: SerializeField]
     public int initialObjListSize { get; private set; }
-    //[field: SerializeField]
     public int currentObjListSize { get; private set; }
 
     private void OnEnable()
@@ -50,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // CODE FOR TESTING
         if (Input.GetKeyDown(KeyCode.R))
             SceneLoader.instance.ReloadScene();
     }
