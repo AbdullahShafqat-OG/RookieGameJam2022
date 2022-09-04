@@ -8,7 +8,9 @@ public class HealthIndicator : MonoBehaviour
 {
     public DestructibleObj dObj;
     [SerializeField]
-    private Image fillImage;
+    private Image damageFillImage, fillImage;
+    public float decreaseStep;
+
     private int totalHealth;
 
     private void Start()
@@ -17,21 +19,37 @@ public class HealthIndicator : MonoBehaviour
     }
     private void Update()
     {
-        if ((float)dObj.health / (float)totalHealth != fillImage.fillAmount)
-        {
-            Debug.Log("YOS");
-            this.transform.DOShakeScale(0.3f);
-        }
+        //if ((float)dObj.health / (float)totalHealth != fillImage.fillAmount)
+        //{
+        //    Debug.Log("YOS");
+        //    this.transform.DOShakeScale(0.3f);
+        //}
 
+        updateHealthBar();
+    }
+
+    private void FixedUpdate()
+    {
+        
+    }
+
+    private void LateUpdate()
+    {
+        
+    }
+
+    void updateHealthBar()
+    {
         fillImage.fillAmount = (float)dObj.health / (float)totalHealth;
 
         if (dObj.health <= 0)
         {
             Destroy(this.gameObject);
         }
-    }
-    private void LateUpdate()
-    {
-        
+
+        if (damageFillImage.fillAmount > fillImage.fillAmount)
+        {
+            damageFillImage.fillAmount -= decreaseStep * Time.deltaTime;
+        }
     }
 }
