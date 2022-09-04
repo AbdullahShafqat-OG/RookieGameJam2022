@@ -23,8 +23,8 @@ public class UIManager : MonoBehaviour
         Messenger.AddListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
         Messenger.AddListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
 
-        menuUI.SetActive(true);
-        gameUI.SetActive(false);
+        //menuUI.SetActive(true);
+        gameUI.SetActive(true);
     }
 
     private void OnDestroy()

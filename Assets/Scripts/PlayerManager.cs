@@ -23,16 +23,16 @@ public class PlayerManager : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerCollision = GetComponent<PlayerCollision>();
 
-        playerInput.enabled = false;
-        playerMovement.enabled = false;
-        playerCollision.enabled = false;
+        //playerInput.enabled = false;
+        //playerMovement.enabled = false;
+        //playerCollision.enabled = false;
 
-        Messenger.AddListener(GameEvent.START_LEVEL, StartLevel);
+        //Messenger.AddListener(GameEvent.START_LEVEL, StartLevel);
     }
 
     private void OnDestroy()
     {
-        Messenger.RemoveListener(GameEvent.START_LEVEL, StartLevel);
+        //Messenger.RemoveListener(GameEvent.START_LEVEL, StartLevel);
     }
 
     private void StartLevel()
