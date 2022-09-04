@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -7,18 +9,36 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField]
+    private GameObject menuUI;
+    [SerializeField]
+    private GameObject gameUI;
+
+    [SerializeField]
     private Slider progressSlider;
+    [SerializeField]
+    private TextMeshProUGUI progressTxt;
 
     private void Awake()
     {
         Messenger.AddListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
         Messenger.AddListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+
+        menuUI.SetActive(true);
+        gameUI.SetActive(false);
     }
 
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
         Messenger.RemoveListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+    }
+
+    private void Start()
+    {
+        progressSlider.value = 0;
+        string text = (gameManager.initialObjListSize - gameManager.currentObjListSize).ToString();
+        text += " / " + gameManager.initialObjListSize;
+        progressTxt.text = text;
     }
 
     private void OnObjDestroyed()
@@ -28,12 +48,30 @@ public class UIManager : MonoBehaviour
 
         float progressValue = (float)gameManager.currentObjListSize / gameManager.initialObjListSize * 100;
         //Debug.Log(progressValue);
-        progressSlider.value = 100 - progressValue;
+        progressSlider.DOValue(100 - progressValue, 0.2f, true).SetEase(Ease.OutSine);
+
+        //progressSlider.value = 100 - progressValue;
+        string text = (gameManager.initialObjListSize - gameManager.currentObjListSize).ToString();
+        text += " / " + gameManager.initialObjListSize;
+        progressTxt.text = text;
     }
 
     private void OnAmmiCaughtUp()
     {
         Debug.Log("Ammi Caught Up Event Triggered in UI");
         // here handle the losing screen
+    }
+
+    public void StartLevel()
+    {
+        Messenger.Broadcast(GameEvent.START_LEVEL);
+        EnableGameUI();
+    }
+
+    private void EnableGameUI()
+    {
+        Debug.Log("Enabling Game UI");
+        menuUI.SetActive(false);
+        gameUI.SetActive(true);
     }
 }
