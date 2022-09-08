@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class UIManager : MonoBehaviour
     private Slider progressSlider;
     [SerializeField]
     private TextMeshProUGUI progressTxt;
+
+    [SerializeField]
+    CinematicCamera cinematicCamera;
 
     private void Awake()
     {
@@ -54,12 +58,32 @@ public class UIManager : MonoBehaviour
         string text = (gameManager.initialObjListSize - gameManager.currentObjListSize).ToString();
         text += " / " + gameManager.initialObjListSize;
         progressTxt.text = text;
+
+        if (progressValue <= 30)
+        {
+            cinematicCamera.gameObject.SetActive(true);
+            Invoke("handleWin", 1.5f);
+        }
     }
 
     private void OnAmmiCaughtUp()
     {
         Debug.Log("Ammi Caught Up Event Triggered in UI");
         // here handle the losing screen
+        cinematicCamera.slowMotionScale = GameManager.instance.timeScale;
+        cinematicCamera.gameObject.SetActive(true);
+        Invoke("handleLoss", 1.5f);
+    }
+
+    void handleLoss()
+    {
+        cinematicCamera.slowMotionScale = 1f;
+        SceneManager.LoadScene("Lose Screen");
+    }
+    void handleWin()
+    {
+        Time.timeScale= GameManager.instance.timeScale;
+        SceneManager.LoadScene("Win Screen");
     }
 
     public void StartLevel()

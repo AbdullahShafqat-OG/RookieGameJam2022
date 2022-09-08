@@ -40,6 +40,15 @@ public class HealthIndicator : MonoBehaviour
 
     void updateHealthBar()
     {
+        if (this.transform.GetComponent<FollowScript>())
+        {
+            if(this.GetComponent<FollowScript>().toFollow == null)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+        }
+
         fillImage.fillAmount = (float)dObj.health / (float)totalHealth;
 
         if (dObj.health <= 0)
