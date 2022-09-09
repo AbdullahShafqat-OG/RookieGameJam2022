@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
         playerCollision = GetComponent<PlayerCollision>();
+        animator.SetTrigger("start moving");
 
         //playerInput.enabled = false;
         //playerMovement.enabled = false;

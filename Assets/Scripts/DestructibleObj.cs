@@ -49,7 +49,7 @@ public class DestructibleObj : MonoBehaviour
 
     private IEnumerator RestoreMaterials()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         meshRenderer.materials = originalMats;
     }
@@ -71,6 +71,7 @@ public class DestructibleObj : MonoBehaviour
 
                 DestructibleObj destructibleObj = child.gameObject.AddComponent<DestructibleObj>();
                 child.gameObject.AddComponent<Rigidbody>();
+                child.gameObject.GetComponent<Rigidbody>().mass = 0.05f;
                 destructibleObj.health = 1;
             }
         }

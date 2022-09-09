@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private float timeScale = 1;
+    internal float timeScale = 1;
     [SerializeField]
     private float dObjDestroyDelay = 1.0f;
     [SerializeField]
@@ -22,6 +22,14 @@ public class GameManager : MonoBehaviour
 
     public int initialObjListSize { get; private set; }
     public int currentObjListSize { get; private set; }
+
+    public static GameManager instance;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void OnEnable()
     {
@@ -78,7 +86,18 @@ public class GameManager : MonoBehaviour
     {
         foreach (var obj in destructibleObjsList)
         {
-            Debug.Log("YOS");
+            for (int i = 0; i < obj.childCount; i++)
+            {
+                Transform child = obj.GetChild(i);
+
+                if(child.tag == "Destructible")
+                {
+                    Instantiate(healthBar, child.transform.position, healthBar.transform.rotation);
+                    healthBar.GetComponent<FollowScript>().toFollow = child.transform;
+                    healthBar.GetComponent<HealthIndicator>().dObj = child.GetComponent<DestructibleObj>();
+                }
+            }
+
             Instantiate(healthBar, obj.position, healthBar.transform.rotation);
             healthBar.GetComponent<FollowScript>().toFollow = obj.transform;
             healthBar.GetComponent<HealthIndicator>().dObj = obj.GetComponent<DestructibleObj>();
