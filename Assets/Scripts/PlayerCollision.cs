@@ -13,11 +13,26 @@ public class PlayerCollision : MonoBehaviour
     private float maxForceMagnitude;
     [SerializeField]
     private float forceOnCollision;
-    
+    [SerializeField]
+    private GameObject animatedBoi, ragdollBoi;
+
+    [SerializeField]
+    private float scoreMultiplierStep;
+
     Transform camHolder;
 
     Vector3 hitPoint;
 
+
+    private void Awake()
+    {
+        Messenger.AddListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+    }
     private void Start()
     {
         camHolder = playerManager.camHolder.transform;
@@ -41,6 +56,14 @@ public class PlayerCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         DestructibleObj dInfo = collision.collider.GetComponent<DestructibleObj>();
+
+        if(collision.transform.tag == "Destructible" || dInfo != null)
+        {
+            Messenger.Broadcast(GameEvent.HitDestructibleObject);
+
+            GameManager.instance.scoreMultiplier += scoreMultiplierStep;
+            GameManager.instance.score += GameManager.instance.hitScore;
+        }
         if (dInfo != null)
         {
             hitPoint = collision.GetContact(0).point;
@@ -61,6 +84,12 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private void OnAmmiCaughtUp()
+    {
+        Debug.Log("Ammi Caught Up Event Triggered in Player Collision");
+        animatedBoi.SetActive(false);
+        ragdollBoi.SetActive(true);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(hitPoint, 0.2f);

@@ -49,16 +49,19 @@ public class HealthIndicator : MonoBehaviour
             }
         }
 
-        fillImage.fillAmount = (float)dObj.health / (float)totalHealth;
-
-        if (dObj.health <= 0)
+        if (dObj)
         {
-            Destroy(this.gameObject);
-        }
+            fillImage.fillAmount = (float)dObj.health / (float)totalHealth;
 
-        if (damageFillImage.fillAmount > fillImage.fillAmount)
-        {
-            damageFillImage.fillAmount -= decreaseStep * Time.deltaTime;
+            if (dObj.health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+
+            if (damageFillImage.fillAmount > fillImage.fillAmount)
+            {
+                damageFillImage.fillAmount -= decreaseStep * Time.deltaTime;
+            }
         }
     }
 }

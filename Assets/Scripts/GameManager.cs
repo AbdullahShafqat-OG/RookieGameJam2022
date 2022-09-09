@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,13 @@ public class GameManager : MonoBehaviour
     private float destroyPEScaleDown = 6.0f;
     [SerializeField]
     private GameObject healthBar;
+    [SerializeField]
+    internal int hitScore, score, targetScore;
+
+    internal float scoreMultiplier;
+
+    [SerializeField]
+    CinematicCamera cinematicCamera;
 
     private List<Transform> destructibleObjsList = new List<Transform>();
 
@@ -29,6 +37,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
+        Messenger.RemoveListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+        Messenger.RemoveListener(GameEvent.HitDestructibleObject, OnHitDestructibleObject);
     }
 
     private void OnEnable()
@@ -43,6 +57,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        scoreMultiplier = 1f;
+
+        Messenger.AddListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
+        Messenger.AddListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+        Messenger.AddListener(GameEvent.HitDestructibleObject, OnHitDestructibleObject);
+
         Time.timeScale = timeScale;
 
         DestructibleObj[] objs = destructibleObjsParent.GetComponentsInChildren<DestructibleObj>();
@@ -54,6 +74,8 @@ public class GameManager : MonoBehaviour
 
         initialObjListSize = destructibleObjsList.Count;
         currentObjListSize = initialObjListSize;
+
+        targetScore = initialObjListSize * hitScore * 3;
 
         Invoke("InstantiateHealthBars", 0.5f);
         //InstantiateHealthBars();
@@ -102,5 +124,46 @@ public class GameManager : MonoBehaviour
             healthBar.GetComponent<FollowScript>().toFollow = obj.transform;
             healthBar.GetComponent<HealthIndicator>().dObj = obj.GetComponent<DestructibleObj>();
         }
+    }
+
+    private void OnObjDestroyed()
+    {
+        if(score >= targetScore && targetScore > 0)
+        {
+            cinematicCamera.gameObject.SetActive(true);
+            Invoke("handleWin", 1.5f);
+        }
+        //float progressValue = (float)currentObjListSize / initialObjListSize * 100;
+
+        //if (progressValue <= 30)
+        //{
+        //    cinematicCamera.gameObject.SetActive(true);
+        //    Invoke("handleWin", 1.5f);
+        //}
+    }
+
+    private void OnAmmiCaughtUp()
+    {
+        Debug.Log("Ammi Caught Up Event Triggered in UI");
+        // here handle the losing screen
+        cinematicCamera.slowMotionScale = GameManager.instance.timeScale;
+        cinematicCamera.gameObject.SetActive(true);
+        Invoke("handleLoss", 1.5f);
+    }
+
+    void OnHitDestructibleObject()
+    {
+
+    }
+
+    void handleLoss()
+    {
+        cinematicCamera.slowMotionScale = 1f;
+        SceneManager.LoadScene("Lose Screen");
+    }
+    void handleWin()
+    {
+        Time.timeScale = GameManager.instance.timeScale;
+        SceneManager.LoadScene("Win Screen");
     }
 }

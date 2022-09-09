@@ -19,6 +19,27 @@ public class MotherController : MonoBehaviour
         cam = Camera.main;
         animator = GetComponent<Animator>();
     }
+    private void Awake()
+    {
+        Messenger.AddListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+        Messenger.AddListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+        Messenger.RemoveListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
+    }
+
+    private void OnAmmiCaughtUp()
+    {
+        Debug.Log("Ammi Caught Up Event Triggered in Mother Controller");
+        animator.SetBool("Hit", true);
+    }
+    private void OnObjDestroyed()
+    {
+        this.GetComponent<NavMeshAgent>().stoppingDistance = 10;
+    }
 
     private void Update()
     {
