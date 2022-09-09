@@ -62,7 +62,7 @@ public class PlayerCollision : MonoBehaviour
             Messenger.Broadcast(GameEvent.HitDestructibleObject);
 
             GameManager.instance.scoreMultiplier += scoreMultiplierStep;
-            GameManager.instance.score += GameManager.instance.hitScore;
+            GameManager.instance.score += (GameManager.instance.hitScore * (int)GameManager.instance.scoreMultiplier);
         }
         if (dInfo != null)
         {

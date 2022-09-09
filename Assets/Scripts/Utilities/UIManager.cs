@@ -28,6 +28,13 @@ public class UIManager : MonoBehaviour
         gameUI.SetActive(true);
     }
 
+    private void Update()
+    {
+        float progressValue = (float)GameManager.instance.score / (float)GameManager.instance.targetScore * 100;
+        progressSlider.DOValue(progressValue, 0.2f, true).SetEase(Ease.OutSine);
+
+        progressTxt.text = GameManager.instance.score.ToString();
+    }
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
@@ -50,16 +57,17 @@ public class UIManager : MonoBehaviour
 
         //float progressValue = (float)gameManager.currentObjListSize / gameManager.initialObjListSize * 100;
         ////Debug.Log(progressValue);
-        float progressValue = (float)GameManager.instance.score / (float)GameManager.instance.targetScore * 100;
-        progressSlider.DOValue(progressValue, 0.2f, true).SetEase(Ease.OutSine);
-        progressSlider.transform.DOShakePosition(1f, 10);
 
         ////progressSlider.value = 100 - progressValue;
         //string text = (gameManager.initialObjListSize - gameManager.currentObjListSize).ToString();
         //text += " / " + gameManager.initialObjListSize;
         //progressTxt.text = text;
 
-        progressTxt.text = GameManager.instance.score.ToString();
+
+        //float progressValue = (float)GameManager.instance.score / (float)GameManager.instance.targetScore * 100;
+        //progressSlider.DOValue(progressValue, 0.2f, true).SetEase(Ease.OutSine);
+        progressSlider.transform.DOShakePosition(1f, 10);
+        //progressTxt.text = GameManager.instance.score.ToString();
     }
 
     private void OnAmmiCaughtUp()

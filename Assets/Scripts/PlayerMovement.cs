@@ -43,18 +43,18 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log(driftAngle);
             GameManager.instance.scoreMultiplier += (scoreMultiIncStep * Mathf.Abs((driftAngle / 90)));
-            GameManager.instance.score += (int)(driftAddScore * Mathf.Abs(driftAngle / 90));
+            //GameManager.instance.score += (int)(driftAddScore);
         }
         else
         {
             if(GameManager.instance.scoreMultiplier >= 1 + scoreMultiDecStep)
             {
-                //float oldValue = GameManager.instance.scoreMultiplier;
+                float oldValue = GameManager.instance.scoreMultiplier;
                 GameManager.instance.scoreMultiplier -= scoreMultiDecStep;
-                //if(GameManager.instance.scoreMultiplier < (int)oldValue)
-                //{
-                //    GameManager.instance.scoreMultiplier = 1;
-                //}
+                if (GameManager.instance.scoreMultiplier < (int)oldValue)
+                {
+                    GameManager.instance.scoreMultiplier = 1;
+                }
             }
         }
 
