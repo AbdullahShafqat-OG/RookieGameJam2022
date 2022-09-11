@@ -18,6 +18,8 @@ public class PlayerCollision : MonoBehaviour
 
     [SerializeField]
     private float scoreMultiplierStep;
+    [SerializeField]
+    private GameObject scorePopup;
 
     Transform camHolder;
 
@@ -62,7 +64,25 @@ public class PlayerCollision : MonoBehaviour
             Messenger.Broadcast(GameEvent.HitDestructibleObject);
 
             GameManager.instance.scoreMultiplier += scoreMultiplierStep;
-            GameManager.instance.score += (GameManager.instance.hitScore * (int)GameManager.instance.scoreMultiplier);
+
+            int newHitScore = (int)((GameManager.instance.hitScore * (int)GameManager.instance.scoreMultiplier) * ((this.GetComponent<Rigidbody>().velocity.magnitude + 1) / playerManager.playerMovement.forwardSpeed));
+            GameManager.instance.score += newHitScore;
+            //GameManager.instance.score += (GameManager.instance.hitScore * (int)GameManager.instance.scoreMultiplier);
+
+
+            var tempPopup = Instantiate(scorePopup, collision.contacts[0].point, scorePopup.transform.rotation);
+            tempPopup.GetComponent<pointsPopup>().score = newHitScore;
+        }
+        else if(collision.transform.tag == "Indestructible")
+        {
+            int newHitScore = (int)((GameManager.instance.hitScore * 2 * ((this.GetComponent<Rigidbody>().velocity.magnitude + 1) / playerManager.playerMovement.forwardSpeed)));
+            newHitScore *= -1;
+            GameManager.instance.score += newHitScore;
+            //GameManager.instance.score += (GameManager.instance.hitScore * (int)GameManager.instance.scoreMultiplier);
+
+
+            var tempPopup = Instantiate(scorePopup, collision.contacts[0].point, scorePopup.transform.rotation);
+            tempPopup.GetComponent<pointsPopup>().score = newHitScore;
         }
         if (dInfo != null)
         {

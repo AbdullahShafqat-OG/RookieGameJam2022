@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         float progressValue = (float)GameManager.instance.score / (float)GameManager.instance.targetScore * 100;
+        progressValue += 0.2f;
         progressSlider.DOValue(progressValue, 0.2f, true).SetEase(Ease.OutSine);
 
         progressTxt.text = GameManager.instance.score.ToString();

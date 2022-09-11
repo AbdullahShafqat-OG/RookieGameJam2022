@@ -50,7 +50,13 @@ public class PlayerMovement : MonoBehaviour
             if(GameManager.instance.scoreMultiplier >= 1 + scoreMultiDecStep)
             {
                 float oldValue = GameManager.instance.scoreMultiplier;
-                GameManager.instance.scoreMultiplier -= scoreMultiDecStep;
+                if(GameManager.instance.scoreMultiplier - ((int)GameManager.instance.scoreMultiplier) > 0.15f){
+                    GameManager.instance.scoreMultiplier -= scoreMultiDecStep;
+                }
+                else
+                {
+                    GameManager.instance.scoreMultiplier -= (scoreMultiDecStep * .4f);
+                }
                 if (GameManager.instance.scoreMultiplier < (int)oldValue)
                 {
                     GameManager.instance.scoreMultiplier = 1;

@@ -52,3 +52,8 @@ MonoBehaviour:
   destroyPEScaleDown: 6
   healthBar: {fileID: 6061074371419098970, guid: 010151b2b2d414342b12d1a0a6120d6b,
     type: 3}
+  hitScore: 100
+  negScore: 0
+  score: 0
+  targetScore: 0
+  cinematicCamera: {fileID: 0}

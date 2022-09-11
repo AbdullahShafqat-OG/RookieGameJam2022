@@ -15,7 +15,14 @@ public class HealthIndicator : MonoBehaviour
 
     private void Start()
     {
-        totalHealth = dObj.health;
+        if (dObj)
+        {
+            totalHealth = dObj.health;
+        }
+        else
+        {
+            totalHealth = 1;
+        }
     }
     private void Update()
     {

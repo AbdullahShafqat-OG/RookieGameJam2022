@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject healthBar;
     [SerializeField]
-    internal int hitScore, score, targetScore;
+    internal int hitScore, negScore, score, targetScore, targetScoreFactor;
 
     internal float scoreMultiplier;
 
@@ -70,12 +70,13 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < objs.Length; i++)
         {
             destructibleObjsList.Add(objs[i].transform);
+            Debug.Log(objs[i].transform.name);
         }
 
         initialObjListSize = destructibleObjsList.Count;
         currentObjListSize = initialObjListSize;
 
-        targetScore = initialObjListSize * hitScore * 3;
+        targetScore = initialObjListSize * hitScore * targetScoreFactor;
 
         Invoke("InstantiateHealthBars", 0.5f);
         //InstantiateHealthBars();
@@ -123,6 +124,8 @@ public class GameManager : MonoBehaviour
             Instantiate(healthBar, obj.position, healthBar.transform.rotation);
             healthBar.GetComponent<FollowScript>().toFollow = obj.transform;
             healthBar.GetComponent<HealthIndicator>().dObj = obj.GetComponent<DestructibleObj>();
+
+            Debug.Log(healthBar.GetComponent<FollowScript>().toFollow.transform.name);
         }
     }
 
