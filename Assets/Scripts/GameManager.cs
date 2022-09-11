@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject healthBar;
     [SerializeField]
-    internal int hitScore, negScore, score, targetScore, targetScoreFactor;
+    internal int hitScore, negScore, score, targetScore;
+    [SerializeField]
+    internal float targetScoreFactor;
 
     internal float scoreMultiplier;
 
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
         initialObjListSize = destructibleObjsList.Count;
         currentObjListSize = initialObjListSize;
 
-        targetScore = initialObjListSize * hitScore * targetScoreFactor;
+        targetScore = (int)(initialObjListSize * hitScore * targetScoreFactor);
 
         Invoke("InstantiateHealthBars", 0.5f);
         //InstantiateHealthBars();
