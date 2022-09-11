@@ -316,6 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5017947526979159075}
+  - component: {fileID: 2532278468566740028}
   m_Layer: 0
   m_Name: cam holder
   m_TagString: Untagged
@@ -339,6 +340,19 @@ Transform:
   m_Father: {fileID: 5017947528119900352}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!114 &2532278468566740028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017947526979159074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561a83d75a7b1bc49ab753c0586f4d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toFollow: {fileID: 5017947528650253855}
 --- !u!1 &5017947527015421598
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +532,7 @@ GameObject:
   - component: {fileID: 5017947527200555500}
   - component: {fileID: 5017947527200555503}
   - component: {fileID: 5017947527200555502}
+  - component: {fileID: 363324950366530623}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -631,12 +646,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5017947527200555504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56f77f8244b638741b834e33d62b389f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 5017947528650253855}
+--- !u!114 &363324950366530623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017947527200555504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea1e63487443d341bf828e9e070ba09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 2
+  duration: 0.5
 --- !u!1 &5017947527222756820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2193,9 @@ MonoBehaviour:
   forwardSpeed: 30
   turnSpeed: 0.1
   maxTurn: 4.5
+  scoreMultiIncStep: 0
+  scoreMultiDecStep: 0
+  driftAddScore: 0
 --- !u!114 &5017947528974596287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2182,6 +2214,10 @@ MonoBehaviour:
   - {fileID: 6230385543387457328, guid: fb9b5c6e44c772940b4c03719bf70bcf, type: 3}
   maxForceMagnitude: 1
   forceOnCollision: 2
+  animatedBoi: {fileID: 0}
+  ragdollBoi: {fileID: 0}
+  scoreMultiplierStep: 0
+  scorePopup: {fileID: 0}
 --- !u!136 &5017947528974596286
 CapsuleCollider:
   m_ObjectHideFlags: 0

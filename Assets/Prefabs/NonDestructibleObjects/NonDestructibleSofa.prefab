@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7934496103063097595}
   m_Layer: 0
   m_Name: NonDestructibleSofa
-  m_TagString: Untagged
+  m_TagString: Indestructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

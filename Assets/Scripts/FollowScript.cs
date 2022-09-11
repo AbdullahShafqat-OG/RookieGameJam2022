@@ -9,6 +9,9 @@ public class FollowScript : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position = toFollow.position;
+        if(toFollow != null)
+        {
+            this.transform.position = toFollow.position;
+        }
     }
 }
