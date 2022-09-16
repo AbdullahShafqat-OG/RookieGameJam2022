@@ -307,8 +307,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenes:
   - m_SceneAsset: {fileID: 102900000, guid: 5641126f9ccb42f41ababaf9359a2fda, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/LivingRoomScene.unity
+    m_IsDirty: 1
+    m_ScenePath: Assets/Scenes/Level 4.unity
 --- !u!4 &574626696
 Transform:
   m_ObjectHideFlags: 0

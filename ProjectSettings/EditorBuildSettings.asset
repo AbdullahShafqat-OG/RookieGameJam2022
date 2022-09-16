@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Screen.unity
     guid: 6a72f1daa6f9e8142b6a3bf32cbba460
   - enabled: 1
-    path: Assets/Scenes/LivingRoomScene.unity
+    path: Assets/Scenes/Level 4.unity
     guid: 5641126f9ccb42f41ababaf9359a2fda
   - enabled: 1
     path: Assets/Scenes/Win Screen.unity
@@ -17,4 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose Screen.unity
     guid: 7816917a84c35314da4fb7296793a7fa
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: de6e47cfdcd9b184ca2feb817d96725c
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 597867510372b6a4586a180092e0ea9d
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 313f19019174bdb4faf6aaa94d91403d
+  - enabled: 1
+    path: Assets/Scenes/Level 5.unity
+    guid: c1568b4cd0aab9c4ba965efdb30751cc
+  - enabled: 1
+    path: Assets/Scenes/Level Template.unity
+    guid: b7f27bf287a328a41a58a1601f3aaafc
   m_configObjects: {}
