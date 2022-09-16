@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+//using UnityEngine.EventSystems;
+//using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
             healthBar.GetComponent<FollowScript>().toFollow = obj.transform;
             healthBar.GetComponent<HealthIndicator>().dObj = obj.GetComponent<DestructibleObj>();
 
-            Debug.Log(healthBar.GetComponent<FollowScript>().toFollow.transform.name);
+            //Debug.Log(healthBar.GetComponent<FollowScript>().toFollow.transform.name);
         }
     }
 
@@ -136,14 +136,14 @@ public class GameManager : MonoBehaviour
         if(score >= targetScore && targetScore > 0)
         {
             cinematicCamera.gameObject.SetActive(true);
-            Invoke("handleWin", 1.5f);
+            Invoke("HandleWin", 1.5f);
         }
         //float progressValue = (float)currentObjListSize / initialObjListSize * 100;
 
         //if (progressValue <= 30)
         //{
         //    cinematicCamera.gameObject.SetActive(true);
-        //    Invoke("handleWin", 1.5f);
+        //    Invoke("HandleWin", 1.5f);
         //}
     }
 
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         // here handle the losing screen
         cinematicCamera.slowMotionScale = GameManager.instance.timeScale;
         cinematicCamera.gameObject.SetActive(true);
-        Invoke("handleLoss", 1.5f);
+        Invoke("HandleLoss", 1.5f);
     }
 
     void OnHitDestructibleObject()
@@ -161,14 +161,20 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void handleLoss()
+    void HandleLoss()
     {
         cinematicCamera.slowMotionScale = 1f;
-        SceneManager.LoadScene("Lose Screen");
+        SceneLoader.instance.SetCurrentLevel();
+        SceneLoader.instance.Load("Lose Screen");
+        //SceneManager.LoadScene("Lose Screen");
     }
-    void handleWin()
+
+    void HandleWin()
     {
         Time.timeScale = GameManager.instance.timeScale;
-        SceneManager.LoadScene("Win Screen");
+        SceneLoader.instance.SetCurrentLevel();
+        SceneLoader.instance.Load("Win Screen");
+
+        //SceneManager.LoadScene("Win Screen");
     }
 }
