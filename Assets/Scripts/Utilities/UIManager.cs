@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
 
         progressTxt.text = GameManager.instance.score.ToString();
     }
+
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
@@ -75,6 +76,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Ammi Caught Up Event Triggered in UI");
     }
+
     public void StartLevel()
     {
         Messenger.Broadcast(GameEvent.START_LEVEL);
