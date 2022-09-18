@@ -67,3 +67,9 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: 313f19019174bdb4faf6aaa94d91403d, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Level 3.unity
+  - m_SceneAsset: {fileID: 102900000, guid: 5641126f9ccb42f41ababaf9359a2fda, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Level 4.unity
+  - m_SceneAsset: {fileID: 102900000, guid: c1568b4cd0aab9c4ba965efdb30751cc, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Level 5.unity

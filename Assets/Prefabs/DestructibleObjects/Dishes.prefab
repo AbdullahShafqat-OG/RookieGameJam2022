@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageMat: {fileID: 2100000, guid: 8f3d5ac30d82fbd4a885647fb421cc4c, type: 2}
   health: 1
+  objectType: glass

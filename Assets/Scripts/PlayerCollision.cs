@@ -26,18 +26,23 @@ public class PlayerCollision : MonoBehaviour
     Vector3 hitPoint;
 
 
+    bool playingBonk;
+
     private void Awake()
     {
         Messenger.AddListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+        Messenger.AddListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
     }
 
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.AMMI_CAUGHT_UP, OnAmmiCaughtUp);
+        Messenger.RemoveListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
     }
     private void Start()
     {
         camHolder = playerManager.camHolder.transform;
+        playingBonk = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,6 +66,19 @@ public class PlayerCollision : MonoBehaviour
 
         if(collision.transform.tag == "Destructible" || dInfo != null)
         {
+            this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<PlayerSoundManager>().bamboo, 1f);
+            if (dInfo.health <= 1)
+            {
+                if (dInfo.objectType == "wood")
+                {
+                    this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<PlayerSoundManager>().woodBreak, 0.8f);
+                }
+                else if(dInfo.objectType == "glass")
+                {
+                    this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<PlayerSoundManager>().glassBreak);
+                }
+            }
+
             Messenger.Broadcast(GameEvent.HitDestructibleObject);
 
             GameManager.instance.scoreMultiplier += scoreMultiplierStep;
@@ -75,14 +93,20 @@ public class PlayerCollision : MonoBehaviour
         }
         else if(collision.transform.tag == "Indestructible")
         {
-            int newHitScore = (int)((GameManager.instance.hitScore * 2 * ((this.GetComponent<Rigidbody>().velocity.magnitude + 1) / playerManager.playerMovement.forwardSpeed)));
-            newHitScore *= -1;
-            GameManager.instance.score += newHitScore;
-            //GameManager.instance.score += (GameManager.instance.hitScore * (int)GameManager.instance.scoreMultiplier);
+            if (!playingBonk)
+            {
+                playingBonk = true;
+                Invoke("allowBonk", 0.1f);
+                this.GetComponent<AudioSource>().PlayOneShot(this.GetComponent<PlayerSoundManager>().bonk, 0.1f);
+            }
+            //int newHitScore = (int)((GameManager.instance.hitScore * 2 * ((this.GetComponent<Rigidbody>().velocity.magnitude + 1) / playerManager.playerMovement.forwardSpeed)));
+            //newHitScore *= -1;
+            //GameManager.instance.score += newHitScore;
+            ////GameManager.instance.score += (GameManager.instance.hitScore * (int)GameManager.instance.scoreMultiplier);
 
 
-            var tempPopup = Instantiate(scorePopup, collision.contacts[0].point, scorePopup.transform.rotation);
-            tempPopup.GetComponent<pointsPopup>().score = newHitScore;
+            //var tempPopup = Instantiate(scorePopup, collision.contacts[0].point, scorePopup.transform.rotation);
+            //tempPopup.GetComponent<pointsPopup>().score = newHitScore;
         }
         if (dInfo != null)
         {
@@ -104,11 +128,22 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    void allowBonk()
+    {
+        playingBonk = false;
+    }
+
+    void OnObjDestroyed()
+    {
+
+    }
     private void OnAmmiCaughtUp()
     {
         Debug.Log("Ammi Caught Up Event Triggered in Player Collision");
         animatedBoi.SetActive(false);
         ragdollBoi.SetActive(true);
+
+        this.GetComponent<AudioSource>().Stop();
     }
     private void OnDrawGizmos()
     {

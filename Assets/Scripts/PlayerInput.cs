@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public PlayerManager playerManager;
-    public FixedJoystick joystick;
+    public Joystick joystick;
 
     internal float dir;
     public float lerpStep;

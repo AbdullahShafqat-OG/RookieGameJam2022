@@ -38,7 +38,11 @@ public class MotherController : MonoBehaviour
     }
     private void OnObjDestroyed()
     {
-        this.GetComponent<NavMeshAgent>().stoppingDistance = 10;
+        if(GameManager.instance.score > GameManager.instance.targetScore)
+        {
+            agent.speed = 0;
+        }
+        //this.GetComponent<NavMeshAgent>().stoppingDistance = 10;
     }
 
     private void Update()
