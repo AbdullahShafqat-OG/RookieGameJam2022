@@ -56,4 +56,6 @@ MonoBehaviour:
   negScore: 0
   score: 0
   targetScore: 0
+  targetScoreFactor: 0
   cinematicCamera: {fileID: 0}
+  totalLevels: 5

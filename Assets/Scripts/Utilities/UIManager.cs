@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
 
     private void OnAmmiCaughtUp()
     {
-        Debug.Log("Ammi Caught Up Event Triggered in UI");
+        //Debug.Log("Ammi Caught Up Event Triggered in UI");
     }
 
     public void StartLevel()
@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
 
     private void EnableGameUI()
     {
-        Debug.Log("Enabling Game UI");
+        //Debug.Log("Enabling Game UI");
         menuUI.SetActive(false);
         gameUI.SetActive(true);
     }

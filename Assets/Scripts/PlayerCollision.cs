@@ -52,7 +52,7 @@ public class PlayerCollision : MonoBehaviour
             Vector3 direction = new Vector3(camHolder.rotation.eulerAngles.x, camHolder.rotation.eulerAngles.y + 90, camHolder.rotation.eulerAngles.z);
             Quaternion targetRotation = Quaternion.Euler(direction);
             Quaternion.Lerp(playerManager.camHolder.transform.rotation, targetRotation, 0);
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
         }
         else if (other.tag == "cam rotate left")
         {
@@ -139,7 +139,7 @@ public class PlayerCollision : MonoBehaviour
     }
     private void OnAmmiCaughtUp()
     {
-        Debug.Log("Ammi Caught Up Event Triggered in Player Collision");
+        //Debug.Log("Ammi Caught Up Event Triggered in Player Collision");
         animatedBoi.SetActive(false);
         ragdollBoi.SetActive(true);
 

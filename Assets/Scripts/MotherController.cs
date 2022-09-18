@@ -33,7 +33,7 @@ public class MotherController : MonoBehaviour
 
     private void OnAmmiCaughtUp()
     {
-        Debug.Log("Ammi Caught Up Event Triggered in Mother Controller");
+        //Debug.Log("Ammi Caught Up Event Triggered in Mother Controller");
         animator.SetBool("Hit", true);
     }
     private void OnObjDestroyed()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuUIManager : MonoBehaviour
 {
@@ -18,12 +19,14 @@ public class MenuUIManager : MonoBehaviour
 
     public void ReloadLevel()
     {
-        SceneLoader.instance.ReloadCurrentLevel();
+        SceneManager.LoadScene("Level " + (PlayerPrefs.GetInt("currLevel") + 1).ToString());
+        //SceneLoader.instance.ReloadCurrentLevel();
     }
 
     public void NextLevel()
     {
-        SceneLoader.instance.LoadNextLevel();
+        SceneManager.LoadScene("Level " + (PlayerPrefs.GetInt("currLevel") + 1).ToString());
+        //SceneLoader.instance.LoadNextLevel();
     }
 
     public void PlayGameInstantly(string gameplayScene)
@@ -44,7 +47,8 @@ public class MenuUIManager : MonoBehaviour
 
     void LoadGameplay()
     {
+        SceneManager.LoadScene("Level " + (PlayerPrefs.GetInt("currLevel") + 1).ToString());
         //SceneManager.LoadScene(gameplaySceneName);
-        SceneLoader.instance.Load(gameplaySceneName);
+        //SceneLoader.instance.LoadNextLevel();
     }
 }

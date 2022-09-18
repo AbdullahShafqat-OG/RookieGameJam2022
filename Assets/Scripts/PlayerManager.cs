@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
 
     private void StartLevel()
     {
-        Debug.Log("Starting Game");
+        //Debug.Log("Starting Game");
 
         playerInput.enabled = true;
         playerMovement.enabled = true;
