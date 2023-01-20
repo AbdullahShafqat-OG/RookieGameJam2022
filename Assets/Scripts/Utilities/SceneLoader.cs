@@ -25,6 +25,15 @@ public class SceneLoader : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        currentLevelIndex = PlayerPrefs.GetInt("currLevel");
+        if(currentLevelIndex == 0 || currentLevelIndex >= scenes.Length)
+        {
+            currentLevelIndex = 3;
+        }
+    }
+
     public void Load(string sceneName)
     {
         SceneReference scene = System.Array.Find(scenes, scene => scene.SceneName == sceneName);
@@ -43,20 +52,27 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        Debug.Log("Loading" + currentLevelIndex);
+
+        PlayerPrefs.SetInt("currLevel", currentLevelIndex + 1);
+
         //int currentScene = SceneManager.GetActiveScene().buildIndex;
         if (currentLevelIndex + 1 < scenes.Length)
             SceneManager.LoadScene(scenes[currentLevelIndex].ScenePath);
         else
         {
             //Debug.LogWarning("Scene Name: " + scenes[currentLevelIndex].SceneName + " is last scene!");
-            SceneManager.LoadScene(menuScene.ScenePath);
+
+            currentLevelIndex = 3;
+            SceneManager.LoadScene(scenes[3].ScenePath);
         }
     }
 
     public void ReloadScene()
     {
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(scenes[currentScene].ScenePath);
+        Debug.Log("reloading: " + currentLevelIndex);
+        //int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scenes[currentLevelIndex].ScenePath);
     }
 
     public void ReloadCurrentLevel()
@@ -66,6 +82,14 @@ public class SceneLoader : MonoBehaviour
 
     public void SetCurrentLevel()
     {
-        currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("before set: " + currentLevelIndex);
+
+        currentLevelIndex++;
+        if (currentLevelIndex >= scenes.Length)
+        {
+            currentLevelIndex = 3;
+        }
+
+        Debug.Log("after set: " + currentLevelIndex);
     }
 }

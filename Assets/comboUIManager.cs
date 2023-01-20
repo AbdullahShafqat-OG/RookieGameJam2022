@@ -17,7 +17,7 @@ public class comboUIManager : MonoBehaviour
     {
         if ((int)GameManager.instance.scoreMultiplier > ((int)oldMultiValue))
         {
-            Debug.Log((int)GameManager.instance.scoreMultiplier + ", " + (((int)oldMultiValue) - 1));
+            //Debug.Log((int)GameManager.instance.scoreMultiplier + ", " + (((int)oldMultiValue) - 1));
             comboFill.transform.parent.transform.DOShakePosition(1f, 10);
         }
 

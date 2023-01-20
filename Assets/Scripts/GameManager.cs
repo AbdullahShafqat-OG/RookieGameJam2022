@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.EventSystems;
-//using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     CinematicCamera cinematicCamera;
+    [SerializeField]
+    internal int totalLevels;
 
     private List<Transform> destructibleObjsList = new List<Transform>();
 
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         scoreMultiplier = 1f;
 
         Messenger.AddListener(GameEvent.OBJ_DESTROYED, OnObjDestroyed);
@@ -72,7 +75,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < objs.Length; i++)
         {
             destructibleObjsList.Add(objs[i].transform);
-            Debug.Log(objs[i].transform.name);
+            //Debug.Log(objs[i].transform.name);
         }
 
         initialObjListSize = destructibleObjsList.Count;
@@ -149,7 +152,7 @@ public class GameManager : MonoBehaviour
 
     private void OnAmmiCaughtUp()
     {
-        Debug.Log("Ammi Caught Up Event Triggered in UI");
+        //Debug.Log("Ammi Caught Up Event Triggered in UI");
         // here handle the losing screen
         cinematicCamera.slowMotionScale = GameManager.instance.timeScale;
         cinematicCamera.gameObject.SetActive(true);
@@ -164,16 +167,36 @@ public class GameManager : MonoBehaviour
     void HandleLoss()
     {
         cinematicCamera.slowMotionScale = 1f;
-        SceneLoader.instance.SetCurrentLevel();
-        SceneLoader.instance.Load("Lose Screen");
+
+        //PlayerPrefs.SetInt("currLevel", PlayerPrefs.GetInt("currLevel") + 1);
+        //if(PlayerPrefs.GetInt("currLevel") >= totalLevels)
+        //{
+        //    PlayerPrefs.SetInt("currLevel", 0);
+        //}
+
+        SceneManager.LoadScene("Lose Screen");
+
+
+
+        //SceneLoader.instance.SetCurrentLevel();
+        //SceneLoader.instance.Load("Lose Screen");
+
         //SceneManager.LoadScene("Lose Screen");
     }
 
     void HandleWin()
     {
         Time.timeScale = GameManager.instance.timeScale;
-        SceneLoader.instance.SetCurrentLevel();
-        SceneLoader.instance.Load("Win Screen");
+        PlayerPrefs.SetInt("currLevel", PlayerPrefs.GetInt("currLevel") + 1);
+        if (PlayerPrefs.GetInt("currLevel") >= totalLevels)
+        {
+            PlayerPrefs.SetInt("currLevel", 0);
+        }
+
+        SceneManager.LoadScene("Win Screen");
+
+        //SceneLoader.instance.SetCurrentLevel();
+        //SceneLoader.instance.Load("Win Screen");
 
         //SceneManager.LoadScene("Win Screen");
     }

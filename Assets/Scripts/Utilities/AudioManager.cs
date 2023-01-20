@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogWarning("Sound Name: " + name + " not found!");
+            //Debug.LogWarning("Sound Name: " + name + " not found!");
             return;
         }
         s.source.Play();

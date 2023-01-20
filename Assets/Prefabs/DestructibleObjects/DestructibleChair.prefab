@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMat: {fileID: 2100000, guid: 8f3d5ac30d82fbd4a885647fb421cc4c, type: 2}
-  health: 2
+  health: 3
+  objectType: wood
 --- !u!208 &4496675684883972541
 NavMeshObstacle:
   m_ObjectHideFlags: 0

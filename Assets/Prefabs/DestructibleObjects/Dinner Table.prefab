@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMat: {fileID: 2100000, guid: 8f3d5ac30d82fbd4a885647fb421cc4c, type: 2}
-  health: 4
+  health: 3
+  objectType: wood
 --- !u!65 &7412606944440237092
 BoxCollider:
   m_ObjectHideFlags: 0

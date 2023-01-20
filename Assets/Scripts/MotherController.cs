@@ -33,12 +33,16 @@ public class MotherController : MonoBehaviour
 
     private void OnAmmiCaughtUp()
     {
-        Debug.Log("Ammi Caught Up Event Triggered in Mother Controller");
+        //Debug.Log("Ammi Caught Up Event Triggered in Mother Controller");
         animator.SetBool("Hit", true);
     }
     private void OnObjDestroyed()
     {
-        this.GetComponent<NavMeshAgent>().stoppingDistance = 10;
+        if(GameManager.instance.score > GameManager.instance.targetScore)
+        {
+            agent.speed = 0;
+        }
+        //this.GetComponent<NavMeshAgent>().stoppingDistance = 10;
     }
 
     private void Update()

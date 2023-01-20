@@ -11,6 +11,9 @@ public class DestructibleObj : MonoBehaviour
     [SerializeField]
     internal int health = 2;
 
+    [SerializeField]
+    internal string objectType;
+
     public delegate void DestroyObjAction(GameObject obj);
     public static event DestroyObjAction onDestroyedObj;
 

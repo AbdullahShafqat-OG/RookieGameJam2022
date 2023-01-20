@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnAmmiCaughtUp()
     {
-        Debug.Log("Ammi Caught Up Event Triggered in Player Movement");
+        //Debug.Log("Ammi Caught Up Event Triggered in Player Movement");
         alive = false;
     }
 }
